@@ -11,8 +11,12 @@ export class PokemonService {
 
     }
 
-    getPokemons(){
-        return this.http.get(`${this.baseUrl}/pokemon`);
+    getPokemons(idxstart=0){
+        if(idxstart){
+        return this.http.get(`${this.baseUrl}/pokemon?offset=${idxstart}`);
+        } else {
+            return this.http.get(`${this.baseUrl}/pokemon`);
+        }
     }
 
     getPokemon(name: string){

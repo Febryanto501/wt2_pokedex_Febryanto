@@ -1,9 +1,9 @@
 
-<ActionBar title="My App">
+<ActionBar title="Pokedex">
 </ActionBar>
 
 <GridLayout>
-    <ListView [items]="pokemons">
+    <ListView [items]="pokemons$ | async" (loadMoreItems)= "loadMore()">
         <ng-template let-pokemon="item">
             <StackLayout>
                 <Label [nsRouterLink]="['/pokemon', pokemon.name]" [text]="pokemon.name"></Label>
