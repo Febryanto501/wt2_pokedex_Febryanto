@@ -3,14 +3,14 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ItemsComponent } from "./item/pokemon.component";
-import { ItemDetailComponent } from "./item/pokemon-detail.component";
+import { PokemonComponent } from "./pokemon/pokemon.component";
+import { PokemonDetailComponent } from "./pokemon/pokemon-detail.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
     bootstrap: [
@@ -18,12 +18,13 @@ import { ItemDetailComponent } from "./item/pokemon-detail.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptHttpClientModule
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent
+        PokemonComponent,
+        PokemonDetailComponent
     ],
     providers: [],
     schemas: [

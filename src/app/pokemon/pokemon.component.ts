@@ -1,18 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 
-import { Item } from "./item";
-import { ItemService } from "./item.service";
+//import { PokemonService } from "./pokemon.service";
 
 @Component({
-    selector: "ns-items",
-    templateUrl: "./items.component.html"
+    selector: "ns-pokemons",
+    templateUrl: "./pokemon.component.html"
 })
-export class ItemsComponent implements OnInit {
-    items: Array<Item>;
+export class PokemonComponent implements OnInit {
 
-    constructor(private itemService: ItemService) { }
+    constructor() { }
 
     ngOnInit(): void {
-        this.items = this.itemService.getItems();
+
     }
 }
