@@ -3,6 +3,6 @@
 @import "~@nativescript/theme/css/default.css";
 
 
-Button.-primary {
-    font-size: 18;
+label {
+    font-size: 20;
 }
