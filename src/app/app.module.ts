@@ -31,7 +31,5 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
         NO_ERRORS_SCHEMA
     ]
 })
-/*
-Pass your application module to the bootstrapModule function located in main.ts to start your app
-*/
+
 export class AppModule { }
