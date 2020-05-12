@@ -4,9 +4,11 @@ import { Routes } from "@angular/router";
 
 import { PokemonComponent } from "./pokemon/pokemon.component";
 import { PokemonDetailComponent } from "./pokemon/pokemon-detail.component";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/pokemon", pathMatch: "full" },
+    { path: "", redirectTo: "/login", pathMatch: "full"},
+    { path: "login", component: LoginComponent },
     { path: "pokemon", component: PokemonComponent },
     { path: "pokemon/:name", component: PokemonDetailComponent }
 ];
