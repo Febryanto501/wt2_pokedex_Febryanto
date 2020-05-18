@@ -1,36 +1,48 @@
 import { Injectable } from '@angular/core';
 import * as as from "tns-core-modules/application-settings";
+const firebase = require("nativescript-plugin-firebase");
 
 @Injectable({ providedIn: "root" })
 export class LoginService {
     constructor() { }
 
-    isAlreadyRegistered(){
-        return as.hasKey("user");
+
+    isloggedIn() {
+        return new Promise((resolve, reject) => {
+            firebase
+                .getCurrentUser()
+                .then((user) => {
+                    resolve(user);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        })
     }
 
-    isLoggedIn(){
-        return as.hasKey("token");
+
+    login() {
+        return new Promise((resolve, reject) => {
+            firebase
+                .login({
+                    type: firebase.LoginType.GOOGLE
+                })
+                .then(
+                    function (result) {
+                        JSON.stringify(result);
+                        resolve(result);
+                    },
+                    function (errorMessage) {
+                        console.log(errorMessage);
+                        reject(errorMessage);
+                    }
+                );
+        })
+
     }
 
-    register(user: User){
-        as.setString("user", JSON.stringify(user));
-    }
-
-    login(userParam: User){
-        if(this.isAlreadyRegistered()){
-            return false;
-        }
-
-        let user: User = JSON.parse(as.getString("user"));
-        if(user.username == userParam.username && user.password == userParam.password){
-            as.setString("token", userParam.username);
-            return true;
-        }
-    }
-
-    logout(){
-        as.remove("token");
+    logout() {
+        firebase.logout()
     }
 }
 

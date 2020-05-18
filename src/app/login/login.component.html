@@ -1,18 +1,8 @@
 <GridLayout rows="*, auto, *" columns="*" >
     <StackLayout row="1" col="0" class="p-x-20">
-        <form [formGroup]="loginForm">
-            <Label text="Username"></Label>
-            <TextField hint="Enter your username" formControlName="username"></TextField>
-            <Label class="footnote" text="username is required" textWrap="true"
-            [visibility]="(username.dirty&&username.invalid)? 'visible':'collapse'">
-            </Label>
-            <Label text="Password"></Label>
-            <TextField hint="Enter your password" formControlName="password"></TextField>
-            <Label class="footnote" text="password is required" textWrap="true"
-            [visibility]="(username.dirty&&username.invalid)? 'visible':'collapse'">
-            </Label>
-            <Button class="-primary" text="login" (tap)="login()" [isEnabled]="!loginForm.invalid"></Button>
-            <Button class="-outline" text="register" (tap)="register()" [isEnabled]="!loginForm.invalid"></Button>
-        </form>
+
+            <Button class="-primary" text="Login with Google" (tap)="login()" [isEnabled]="!loginForm.invalid"></Button>
+
+
     </StackLayout>
 </GridLayout>

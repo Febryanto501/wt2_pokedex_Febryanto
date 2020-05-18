@@ -32,27 +32,26 @@ export class LoginComponent implements OnInit {
         page.actionBarHidden = true;
     }
 
-    ngOnInit(): void { }
+    ngOnInit() {
+        this.ls.isloggedIn().then(
+            (res) =>{
+                this.router.navigate(["/pokemon"], { clearHistory: true });
+            },
+            (err)=>{
+                console.log(err);
+            }
+        )
+    }
 
     login() {
-        if (this.ls.login(this.loginForm.value)) {
-            this.router.navigate(["/pokemon"]);
-        }
+        this.ls.login().then(
+            (result) => {
+                this.router.navigate(["/pokemon"], { clearHistory: true });
+
+            }, (err) => {
+                console.log(err);
+            })
     }
 
-    register() {
-        if (this.ls.isAlreadyRegistered()) {
-            dialog
-                .confirm("Rgister a new user well replace the current user. Are you sure?")
-                .then((result) => {
-                    if (result) {
-                        this.ls.register(this.loginForm.value);
-                        alert(`User ${this.loginForm.value.username} has been registered`);
-                    }
-                });
-        } else {
-            this.ls.register(this.loginForm.value);
-            alert(`User ${this.loginForm.value.username} has been registered`);
-        }
-    }
+
 }
